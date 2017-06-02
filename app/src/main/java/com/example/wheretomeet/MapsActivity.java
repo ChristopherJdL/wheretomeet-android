@@ -66,7 +66,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void storePlace (String response) {
-
+/// Hi
         JSONParser parser = new JSONParser();
         JSONObject place = null;
 
