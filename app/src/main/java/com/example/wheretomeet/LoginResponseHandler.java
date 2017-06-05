@@ -37,9 +37,9 @@ public class LoginResponseHandler extends AsyncHttpResponseHandler {
         response = new String(responseBody);
         this.AddtoHeader(response);
         HttpClientHelper helper=new HttpClientHelper(client);
-        this.updateGPS();
+        //this.updateGPS();
         helper.postLocation(37.508600, 126.961607);     //heukseok dong
-        System.out.println(locationx+"  "+locationy);
+        //System.out.println(locationx+"  "+locationy);
         helper.getFriendsList(activity,appToken);
     }
 

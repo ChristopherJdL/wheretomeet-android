@@ -1,5 +1,6 @@
 package com.example.wheretomeet;
 
+import android.graphics.BitmapFactory;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -7,6 +8,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -30,7 +33,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
@@ -56,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         fname=getIntent().getStringArrayListExtra("name");
 
         LatLng place = new LatLng(locationx , locationy);
-        mMap.addMarker(new MarkerOptions().position(place).title(name));
+        mMap.addMarker(new MarkerOptions().position(place).title(name).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.marker))));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place,14));
 
         for(int i=0;i<fname.size();i++) {

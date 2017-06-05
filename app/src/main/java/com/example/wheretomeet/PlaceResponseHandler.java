@@ -59,8 +59,6 @@ public class PlaceResponseHandler extends AsyncHttpResponseHandler{
 
     @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {;
-        response=new String(responseBody);
-        System.out.println(response);
-        System.out.println("place get fail");
+        Toast.makeText(activity, "Place get failed", Toast.LENGTH_SHORT).show();
     }
 }
