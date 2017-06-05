@@ -20,12 +20,7 @@ public class LoginResponseHandler extends AsyncHttpResponseHandler {
     private String response;
     private LoginActivity activity;
     private AsyncHttpClient client;
-    private GpsInfo gps;
     private String appToken;
-
-    private double locationx;
-    private double locationy;
-
 
     public LoginResponseHandler(AsyncHttpClient client, LoginActivity activity){
         this.client=client;
@@ -37,9 +32,10 @@ public class LoginResponseHandler extends AsyncHttpResponseHandler {
         response = new String(responseBody);
         this.AddtoHeader(response);
         HttpClientHelper helper=new HttpClientHelper(client);
-        //this.updateGPS();
-        helper.postLocation(37.508600, 126.961607);     //heukseok dong
-        //System.out.println(locationx+"  "+locationy);
+        helper.postLocation(activity.locationy, activity.locationx);
+        activity.checkDangerousPermission();
+        activity.lm.removeUpdates(activity.mLocationListener);
+
         helper.getFriendsList(activity,appToken);
     }
 
@@ -61,17 +57,4 @@ public class LoginResponseHandler extends AsyncHttpResponseHandler {
         client.addHeader("Authorization", "Bearer " + appToken);
     }
 
-    private void updateGPS() {
-
-        gps = new GpsInfo(activity.getApplicationContext());
-        if (gps.isGetLocation()) {      //GPS 사용할 수 있을 때 위치 받아옴
-            locationx = gps.getLatitude();
-            locationy = gps.getLongitude();
-        }
-
-        else { // GPS 를 사용할수 없으므로 셋팅창 알람
-            System.out.println("GPS failed");
-            gps.showSettingsAlert();
-        }
-    }
 }

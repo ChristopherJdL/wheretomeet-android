@@ -5,8 +5,6 @@ import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
-import java.util.ArrayList;
-
 import cz.msebera.android.httpclient.Header;
 
 /**
