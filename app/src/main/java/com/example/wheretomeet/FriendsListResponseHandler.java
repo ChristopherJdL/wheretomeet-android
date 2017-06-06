@@ -16,10 +16,14 @@ public class FriendsListResponseHandler extends AsyncHttpResponseHandler {
     private String value;
     LoginActivity activity;
     String appToken;
+    double lat;
+    double log;
 
-    public FriendsListResponseHandler(LoginActivity activity,String appToken) {
+    public FriendsListResponseHandler(LoginActivity activity,String appToken,double lat,double log) {
         this.activity=activity;
         this.appToken=appToken;
+        this.lat=lat;
+        this.log=log;
     }
 
     @Override
@@ -31,6 +35,9 @@ public class FriendsListResponseHandler extends AsyncHttpResponseHandler {
         Intent friends=new Intent(activity.getApplicationContext(),FriendsActivity.class);
         friends.putExtra("friends",value);
         friends.putExtra("appToken",appToken);
+        friends.putExtra("lat",lat);
+        friends.putExtra("log",log);
+
         activity.startActivity(friends);
         activity.finish();
     }

@@ -31,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
             double longitude = location.getLongitude();
             double latitude = location.getLatitude();
 
-            locationx=longitude;
-            locationy=latitude;
+            locationy=longitude;
+            locationx=latitude;
         }
 
         public void onProviderDisabled(String provider) {

@@ -26,6 +26,8 @@ public class FriendsActivity extends AppCompatActivity {
     ImageButtonOnClickListener restaurantclick;
     ImageButtonOnClickListener subwayclick;
     ImageButtonOnClickListener shoppingclick;
+    double lat;
+    double log;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,9 @@ public class FriendsActivity extends AppCompatActivity {
         appToken = getIntent().getStringExtra("appToken");
 
         this.StoreFriends(getIntent().getStringExtra("friends"));
+
+        lat=getIntent().getExtras().getDouble("lat");
+        log=getIntent().getExtras().getDouble("log");
 
         adapter = new FriendsAdapter(this, R.layout.list_item, friends);
 

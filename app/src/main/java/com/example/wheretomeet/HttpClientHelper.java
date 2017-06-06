@@ -68,9 +68,9 @@ public class HttpClientHelper {
         });
     }
 
-    void getFriendsList(LoginActivity activity,String appToken)  {
+    void getFriendsList(LoginActivity activity,String appToken,double lat,double log)  {
         String URL=URL_API+"api/friends";
-        FriendsListResponseHandler handler= new FriendsListResponseHandler(activity,appToken);
+        FriendsListResponseHandler handler= new FriendsListResponseHandler(activity,appToken,lat,log);
         client.get(URL, handler);
     }
 

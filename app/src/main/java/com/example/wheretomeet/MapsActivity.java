@@ -28,6 +28,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double[] flocationx;
     private double[] flocationy;
     private ArrayList<String> fname;
+    private double mylat;
+    private double mylog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         flocationx=getIntent().getDoubleArrayExtra("locationx");
         flocationy=getIntent().getDoubleArrayExtra("locationy");
         fname=getIntent().getStringArrayListExtra("name");
+        mylat=getIntent().getExtras().getDouble("mylat");
+        mylog=getIntent().getExtras().getDouble("mylog");
 
         LatLng place = new LatLng(locationx , locationy);
         mMap.addMarker(new MarkerOptions().position(place).title(name).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.marker))));
@@ -65,7 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for(int i=0;i<fname.size();i++) {
             mMap.addMarker(new MarkerOptions().position(new LatLng(flocationy[i], flocationx[i])).title(fname.get(i)));
         }
-        mMap.addMarker(new MarkerOptions().position(new LatLng(37.508600, 126.961607)).title("ME"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(mylat, mylog)).title("ME"));
     }
 
     private void storePlace (String response) {

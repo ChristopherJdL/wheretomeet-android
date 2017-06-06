@@ -32,11 +32,11 @@ public class LoginResponseHandler extends AsyncHttpResponseHandler {
         response = new String(responseBody);
         this.AddtoHeader(response);
         HttpClientHelper helper=new HttpClientHelper(client);
-        helper.postLocation(activity.locationy, activity.locationx);
+        helper.postLocation(activity.locationx, activity.locationy);
         activity.checkDangerousPermission();
         activity.lm.removeUpdates(activity.mLocationListener);
 
-        helper.getFriendsList(activity,appToken);
+        helper.getFriendsList(activity,appToken,activity.locationx,activity.locationy);
     }
 
     @Override

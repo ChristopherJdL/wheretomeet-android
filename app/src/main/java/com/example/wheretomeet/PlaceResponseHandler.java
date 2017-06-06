@@ -52,6 +52,8 @@ public class PlaceResponseHandler extends AsyncHttpResponseHandler{
             map.putExtra("locationx",locationx);
             map.putExtra("locationy",locationy);
             map.putStringArrayListExtra("name",name);
+            map.putExtra("mylat",activity.lat);
+            map.putExtra("mylog",activity.log);
 
             activity.startActivity(map);
         }
