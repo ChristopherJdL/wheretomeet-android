@@ -1,5 +1,6 @@
 package com.example.wheretomeet;
 
+import android.app.Dialog;
 import android.util.Log;
 import com.loopj.android.http.*;
 import org.json.simple.JSONObject;
@@ -85,5 +86,13 @@ public class HttpClientHelper {
         params.put("participants",participants);
         String URL=URL_API+"api/perfectplace";
         client.get(URL, params,handler);
+    }
+
+    void postFriend(String username, FriendsActivity activity,Dialog dialog) {
+        RequestParams params = new RequestParams();
+        postFriendResponseHandler handler= new postFriendResponseHandler(activity,dialog);
+        params.put("username",username);
+        String URL = URL_API + "api/friends";
+        client.post(URL, params, handler);
     }
 }

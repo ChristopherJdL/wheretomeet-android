@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="Greenery">#88B04B</color>
-    <color name="PrimroseYellow">#F3CF55</color>
-    <color name="White">#FFFFFF</color>
+    <color name="PrimroseYellow">#f3cf55</color>
+    <color name="White">#ffffff</color>
     <color name="Gray">#8C8C8C</color>
 </resources>

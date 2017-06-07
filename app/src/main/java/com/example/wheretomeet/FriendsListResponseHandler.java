@@ -33,6 +33,7 @@ public class FriendsListResponseHandler extends AsyncHttpResponseHandler {
         Toast.makeText(activity, "Signed in", Toast.LENGTH_SHORT).show();
 
         Intent friends=new Intent(activity.getApplicationContext(),FriendsActivity.class);
+
         friends.putExtra("friends",value);
         friends.putExtra("appToken",appToken);
         friends.putExtra("lat",lat);

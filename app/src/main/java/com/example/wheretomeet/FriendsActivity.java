@@ -1,8 +1,12 @@
 package com.example.wheretomeet;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -15,11 +19,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class FriendsActivity extends AppCompatActivity {
+public class FriendsActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private ArrayList<Friend> friends = new ArrayList<Friend>();
+    ArrayList<Friend> friends = new ArrayList<Friend>();
     private ListView listview;
-    private FriendsAdapter adapter;
+    FriendsAdapter adapter;
     private String appToken;
     ImageButtonOnClickListener movieclick;
     ImageButtonOnClickListener cafeclick;
@@ -34,6 +38,10 @@ public class FriendsActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(this);
 
         appToken = getIntent().getStringExtra("appToken");
 
@@ -109,7 +117,7 @@ public class FriendsActivity extends AppCompatActivity {
         }
     }
 
-    private void StoreFriends(String value) {
+    public void StoreFriends(String value) {
         JSONArray jsonArr;
         JSONObject friend;
         try {
@@ -131,4 +139,37 @@ public class FriendsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void onClick(View view) {
+
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.add_dialog);
+        dialog.setTitle("Add Friend");
+        final EditText username = (EditText) dialog.findViewById(R.id.username);
+        final Button add=(Button) dialog.findViewById(R.id.Add);
+
+        final FriendsActivity activity=this;
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AsyncHttpClient client = new AsyncHttpClient();
+                client.addHeader("Authorization", "Bearer " + appToken);
+                HttpClientHelper helper = new HttpClientHelper(client);
+                helper.postFriend(username.getText().toString(), activity,dialog);
+            }
+        });
+
+        final Button close=(Button) dialog.findViewById(R.id.Close);
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
 }
