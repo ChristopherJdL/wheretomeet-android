@@ -76,15 +76,13 @@
             />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="go"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/Greenery"
-            android:textColor="@color/White"
-            android:textSize="25dp"
+            android:background="@mipmap/jw_launcher"
             android:onClick="goMap"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="20dp"
+            />
 
         </LinearLayout>
 
@@ -97,7 +95,7 @@
             android:id="@+id/fab"
             android:tint="@color/White"
             android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
+            android:layout_margin="30dp"
             />
 
 </android.support.design.widget.CoordinatorLayout>

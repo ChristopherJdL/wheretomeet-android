@@ -41,8 +41,13 @@ public class LoginResponseHandler extends AsyncHttpResponseHandler {
 
     @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-        response = new String(responseBody);
-        Toast.makeText(activity, response, Toast.LENGTH_SHORT).show();
+        if (responseBody==null) {
+            Toast.makeText(activity, "Time out. Please try again.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            response = new String(responseBody);
+            Toast.makeText(activity, response, Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void AddtoHeader(String response) {

@@ -26,7 +26,12 @@ public class RegisterResponseHandler extends AsyncHttpResponseHandler{
 
     @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-        String response=new String(responseBody);
-        Toast.makeText(activity, response, Toast.LENGTH_SHORT).show();
+        if (responseBody==null) {
+            Toast.makeText(activity, "Time out", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            String response = new String(responseBody);
+            Toast.makeText(activity, response, Toast.LENGTH_SHORT).show();
+        }
     }
 }

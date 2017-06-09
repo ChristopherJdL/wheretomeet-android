@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp">
+    android:layout_margin="15dp">
 
-    <EditText
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="15"
-        android:id="@+id/username"
-        android:layout_gravity="center"
-        android:hint="Username"/>
+        app:srcCompat="@drawable/close"
+        android:id="@+id/Close"
+        android:backgroundTint="@color/White"
+        android:layout_gravity="right"
+        android:layout_marginBottom="35dp"/>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_margin="10dp">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="15"
+            android:id="@+id/username"
+            android:hint="Username"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"/>
 
         <Button
             android:text="Add"
@@ -25,15 +36,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/Add"
             android:backgroundTint="@color/Greenery"
-            android:textColor="@color/White"/>
+            android:textColor="@color/White"
+            android:layout_marginLeft="5dp"/>
 
-        <Button
-            android:text="CLOSE"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/Close"
-            android:backgroundTint="@color/Greenery"
-            android:textColor="@color/White"/>
     </LinearLayout>
 
 </LinearLayout>

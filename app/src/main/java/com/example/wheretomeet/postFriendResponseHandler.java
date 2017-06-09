@@ -30,13 +30,18 @@ public class postFriendResponseHandler extends AsyncHttpResponseHandler {
         activity.StoreFriends(response);
 
         activity.adapter.notifyDataSetChanged();     //refresh
-
+        Toast.makeText(activity, "Friends Added",Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-        response = new String(responseBody);
-        Toast.makeText(activity, response, Toast.LENGTH_SHORT).show();
+        if (responseBody==null) {
+            Toast.makeText(activity, "Time out", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            response = new String(responseBody);
+            Toast.makeText(activity, response, Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
         if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "GPS Permission OK", Toast.LENGTH_LONG).show();
+            System.out.println("GPS Permission OK");
         } else {
             Toast.makeText(this, "GPS No Permission", Toast.LENGTH_LONG).show();
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[0])) {

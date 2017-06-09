@@ -26,7 +26,8 @@
             android:theme="@style/NoTitle" />
         <activity
             android:name=".FriendsActivity"
-            android:label="Friends" />
+            android:label="Friends"
+            android:windowSoftInputMode="adjustPan"/>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

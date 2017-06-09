@@ -161,7 +161,7 @@ public class FriendsActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-        final Button close=(Button) dialog.findViewById(R.id.Close);
+        final ImageButton close=(ImageButton) dialog.findViewById(R.id.Close);
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override

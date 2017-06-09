@@ -1,6 +1,5 @@
 package com.example.wheretomeet;
 
-import android.widget.Toast;
 
 /**
  * Created by 선희 on 2017-05-21.
